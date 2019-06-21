@@ -12,27 +12,28 @@ import java.util.List;
 public class UserServiceDao {
     @Autowired
     UserRepository userRepository;
-    List<User> findAllUsers(){
+
+    public List<User> findAllUsers(){
         List<User> users=userRepository.findAll();
         return users;
     }
 
-    User findUserById(Long id){
+    public User findUserById(Long id){
        User user=userRepository.findUserById(id);
         return user;
     }
 
-    User createUser(User user){
+    public User createUser(User user){
         User userCreated=userRepository.save(user);
         return userCreated;
     }
 
-    User updateUser(User user){
+    public User updateUser(User user){
         User userUpdated=userRepository.save(user);
         return userUpdated;
     }
 
-    void deleteUser(Long id){
+    public void deleteUser(Long id){
         userRepository.deleteById(id);
     }
 
