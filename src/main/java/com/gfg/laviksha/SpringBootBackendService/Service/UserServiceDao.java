@@ -2,12 +2,14 @@ package com.gfg.laviksha.SpringBootBackendService.Service;
 
 import com.gfg.laviksha.SpringBootBackendService.Model.User;
 import com.gfg.laviksha.SpringBootBackendService.Repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.jws.soap.SOAPBinding;
 import java.util.List;
-
+import java.util.Optional;
+@Slf4j
 @Service
 public class UserServiceDao {
     @Autowired
@@ -19,8 +21,10 @@ public class UserServiceDao {
     }
 
     public User findUserById(Long id){
-       User user=userRepository.findUserById(id);
-        return user;
+
+       Optional<User> user=userRepository.findById(id);
+        log.debug("User  with id:{} is {} ",id,user.get());
+        return user.get();
     }
 
     public User createUser(User user){
